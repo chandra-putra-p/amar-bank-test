@@ -1,6 +1,23 @@
 {
     "require": {
         "slim/slim": "4.*",
-        "respect/validation": "^2.3"
+        "respect/validation": "^2.3",
+        "slim/psr7": "^1.7",
+        "ramsey/uuid": "^4.7",
+        "monolog/monolog": "^3.8",
+        "php-di/php-di": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers",
+            "Models\\": "src/models",
+            "Handlers\\": "src/handlers",
+            "Utils\\": "src/utils",
+            "Services\\": "src/services",
+            "Validators\\": "src/validators"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t src src/index.php"
     }
 }
