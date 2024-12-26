@@ -76,9 +76,9 @@ You will be able to hit these APIs:
         "data": {
             "id": "663457b8-7624-48da-9062-06c42853e822",
             "timestamp": "2024-12-26 12:48:09",
-            "name": "chandra 2",
+            "name": "John Doe",
             "ktpNumber": "1122330112804455",
-            "loanAmount": 1000,
+            "loanAmount": 1001,
             "loanPeriod": 1,
             "loanPurpose": "wedding party",
             "dob": "01-12-1980",
@@ -86,3 +86,4 @@ You will be able to hit these APIs:
         }
     }
     ```
+The created loan data will be stored in json file at `/_database/loans.json`
