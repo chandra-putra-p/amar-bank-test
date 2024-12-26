@@ -1,4 +1,5 @@
 <?php
+
 namespace Services;
 
 use Models\Loan;
@@ -13,11 +14,32 @@ class LoanService
         $this->logger = new LoggerUtil('loanService');
     }
 
+    /**
+     * NOTE: below block, can improved using `LoanSaver` interface.
+     *  Create class let's say `LoanJsonSaver` implements `LoanSaver`
+     *  and then inject via file /config/dependencies.php using `LoanJsonSaver` instance.
+     *
+     * the LoanService constructor become:
+     * ```
+     *  public function __construct(LoanSaver $loanSaver)
+     *  {
+     *      $this->loanSaver = $loanSaver;
+     *  }
+     *  ...
+     *
+     *  public function create(Loan $loan)
+     *  {
+     *      ...
+     *      $this->loanSaver->save($loan);
+     *      ...
+     *  }
+     * ```
+     */
     public function create(Loan $loan)
     {
         $this->logger->info('Data want to save ', ["data" => $loan]);
 
-        // Read existing data
+        // Read existing loan data
         $jsonFile = __DIR__ . '/../../_database/loans.json';
         $existingData = [];
         $this->logger->info('Reading existing data from ' . $jsonFile);
@@ -29,7 +51,7 @@ class LoanService
 
         array_push($existingData, $loan);
 
-        // Write to JSON file
+        // Write to loan JSON file
         $this->logger->info("Writing data to $jsonFile", ["data" => $existingData]);
         file_put_contents($jsonFile, json_encode($existingData, JSON_PRETTY_PRINT));
 

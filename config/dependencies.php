@@ -8,7 +8,6 @@ use Validators\LoanValidator;
 $containerBuilder = new ContainerBuilder();
 
 $containerBuilder->addDefinitions([
-    // Controller configurations
     LoanController::class => function (LoanService $service) {
         return new LoanController($service, new LoanValidator());
     },

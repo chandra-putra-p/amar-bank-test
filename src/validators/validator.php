@@ -1,7 +1,6 @@
 <?php
-namespace Validators;
 
-use Respect\Validation\Exceptions\NestedValidationException;
+namespace Validators;
 
 abstract class Validator
 {
