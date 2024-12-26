@@ -7,6 +7,9 @@
         "monolog/monolog": "^3.8",
         "php-di/php-di": "^7.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
     "autoload": {
         "psr-4": {
             "Controllers\\": "src/controllers",
@@ -17,7 +20,13 @@
             "Validators\\": "src/validators"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "scripts": {
-        "start": "php -S localhost:8080 -t src src/index.php"
+        "start": "php -S localhost:8080 -t src src/index.php",
+        "test": "./vendor/bin/phpunit"
     }
 }
